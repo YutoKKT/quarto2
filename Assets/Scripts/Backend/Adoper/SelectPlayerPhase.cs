@@ -17,6 +17,10 @@ public class SelectPlayerPhase : GamePhase
         //人が書いたアルゴリズムを手書きで追加
         selectPieceAlgorithms.Add("defo",new ConcreteSelectPieceAlgorithm());
         putPieceAlgorithms.Add("DEFO",new ConcretePutPieceAlgorithm());
+
+        // 追加する
+        selectPieceAlgorithms.Add("Youkan",new YoukanSelectPieceAlgorithm());
+        putPieceAlgorithms.Add("Youkan",new YoukanPutPieceAlgorithm());
     }
     public override Result execute(Command command, GameController gameController)
     {
@@ -33,8 +37,8 @@ public class SelectPlayerPhase : GamePhase
         SelectPlayerCommand selectPlayerCommand = (SelectPlayerCommand)command;
         
         // アルゴリズム名のデフォルト値を設定
-        string selectPieceAlgorithmName = "defo";
-        string putPieceAlgorithmName = "DEFO";
+        string selectPieceAlgorithmName = "Youkan";
+        string putPieceAlgorithmName = "Youkan";
         
         if (!string.IsNullOrEmpty(selectPlayerCommand.SelectPieceAlgorithmName))
         {

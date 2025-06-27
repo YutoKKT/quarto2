@@ -6,7 +6,7 @@ using UnityEngine.SocialPlatforms;
 
 public class CameraMover : MonoBehaviour//MainCameraにアタッチ
 {
-    // WASD：前後左右の移動
+    // WASD/十字キー：前後左右の移動
     // QE：上昇・降下
     // 右ドラッグ：カメラの回転
     // 左ドラッグ：前後左右の移動
@@ -134,12 +134,19 @@ public class CameraMover : MonoBehaviour//MainCameraにアタッチ
 	{
         Vector3 campos = _camTransform.position;
 		
+		// WASD キー
 		if (Input.GetKey(KeyCode.D)) { campos += _camTransform.right * Time.deltaTime * _positionStep; }
 		if (Input.GetKey(KeyCode.A)) { campos -= _camTransform.right * Time.deltaTime * _positionStep; }
 		if (Input.GetKey(KeyCode.E)) { campos += _camTransform.up * Time.deltaTime * _positionStep; }
 		if (Input.GetKey(KeyCode.Q)) { campos -= _camTransform.up * Time.deltaTime * _positionStep; }
 		if (Input.GetKey(KeyCode.W)) { campos += _camTransform.forward * Time.deltaTime * _positionStep; }
 		if (Input.GetKey(KeyCode.S)) { campos -= _camTransform.forward * Time.deltaTime * _positionStep; }
+
+		// 十字キー（矢印キー）- WASDと同じ動作
+		if (Input.GetKey(KeyCode.RightArrow)) { campos += _camTransform.right * Time.deltaTime * _positionStep; }
+		if (Input.GetKey(KeyCode.LeftArrow)) { campos -= _camTransform.right * Time.deltaTime * _positionStep; }
+		if (Input.GetKey(KeyCode.UpArrow)) { campos += _camTransform.forward * Time.deltaTime * _positionStep; }
+		if (Input.GetKey(KeyCode.DownArrow)) { campos -= _camTransform.forward * Time.deltaTime * _positionStep; }
 
 		_camTransform.position = campos;
 	}
